@@ -31,16 +31,36 @@ path=(
 # -- Prompt --
 eval "$(starship init zsh)"
 
-# -- NVM (lazy-loaded) --
+# -- NVM (lazy-loaded, auto-switches on .nvmrc) --
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unfunction nvm node npm npx 2>/dev/null
+_nvm_load() {
+  unfunction nvm node npm npx _nvm_load 2>/dev/null
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  nvm "$@"
 }
-node() { nvm --version >/dev/null 2>&1; unfunction node 2>/dev/null; node "$@"; }
-npm()  { nvm --version >/dev/null 2>&1; unfunction npm 2>/dev/null; npm "$@"; }
-npx()  { nvm --version >/dev/null 2>&1; unfunction npx 2>/dev/null; npx "$@"; }
+nvm()  { _nvm_load; nvm "$@"; }
+node() { _nvm_load; node "$@"; }
+npm()  { _nvm_load; npm "$@"; }
+npx()  { _nvm_load; npx "$@"; }
+
+# Auto-switch node version when entering a directory with .nvmrc
+_nvm_auto_use() {
+  if [ -f .nvmrc ]; then
+    # Ensure nvm is loaded
+    if ! command -v nvm &>/dev/null || [ "$(type -w nvm)" = "nvm: function" ] && [ "$(which nvm 2>/dev/null)" = "" ]; then
+      _nvm_load 2>/dev/null
+    fi
+    local target
+    target="$(cat .nvmrc)"
+    local current
+    current="$(node --version 2>/dev/null)"
+    # Only switch if needed (avoids slow nvm use on every cd)
+    if [ "$current" != "v${target#v}" ]; then
+      nvm use --silent 2>/dev/null
+    fi
+  fi
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _nvm_auto_use
 
 # -- Bun --
 export BUN_INSTALL="$HOME/.bun"
