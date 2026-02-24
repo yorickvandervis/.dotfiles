@@ -17,13 +17,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # -- PATH --
 typeset -U path
-export PNPM_HOME="$HOME/.local/share/pnpm"
 path=(
   "$HOME/.local/bin"
   "$HOME/.opencode/bin"
   "$HOME/.bun/bin"
   "$HOME/.fly/bin"
-  "$PNPM_HOME"
   "/snap/bin"
   $path
 )
@@ -34,13 +32,15 @@ eval "$(starship init zsh)"
 # -- NVM (lazy-loaded, auto-switches on .nvmrc) --
 export NVM_DIR="$HOME/.nvm"
 _nvm_load() {
-  unfunction nvm node npm npx _nvm_load 2>/dev/null
+  unfunction nvm node npm npx pnpm _nvm_load 2>/dev/null
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  corepack enable 2>/dev/null
 }
 nvm()  { _nvm_load; nvm "$@"; }
 node() { _nvm_load; node "$@"; }
 npm()  { _nvm_load; npm "$@"; }
 npx()  { _nvm_load; npx "$@"; }
+pnpm() { _nvm_load; pnpm "$@"; }
 
 # Auto-switch node version when entering a directory with .nvmrc
 _nvm_auto_use() {
