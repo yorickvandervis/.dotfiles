@@ -17,11 +17,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # -- PATH --
 typeset -U path
+export PNPM_HOME="$HOME/.local/share/pnpm"
 path=(
   "$HOME/.local/bin"
   "$HOME/.opencode/bin"
   "$HOME/.bun/bin"
   "$HOME/.fly/bin"
+  "$PNPM_HOME"
   "/snap/bin"
   $path
 )
@@ -63,3 +65,4 @@ alias gp="git push"
 alias oc="opencode"
 alias ll="ls -lah"
 alias la="ls -la"
+
