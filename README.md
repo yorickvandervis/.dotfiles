@@ -13,13 +13,15 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Setup on a New Machine
 
+Works on **Linux** (Ubuntu/Debian) and **macOS**.
+
 ```bash
 # 1. Clone (repo name is .dotfiles, so it lands in ~/.dotfiles automatically)
 git clone --recursive https://github.com/yorickvandervis/.dotfiles.git ~
 
 # 2. Install stow
-sudo apt install stow    # Ubuntu/Debian
-# brew install stow      # macOS
+sudo apt install stow    # Linux (Ubuntu/Debian)
+brew install stow         # macOS
 
 # 3. Stow all packages
 cd ~/.dotfiles
@@ -30,6 +32,9 @@ cd ~/.config/opencode && npm install && cd -
 
 # 5. Install cloudflare skill (optional)
 curl -fsSL https://raw.githubusercontent.com/dmmulroy/cloudflare-skill/main/install.sh | bash -s -- --global
+
+# 6. Reload shell
+source ~/.zshrc
 ```
 
 ## Stow Commands
