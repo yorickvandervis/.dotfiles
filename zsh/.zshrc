@@ -8,7 +8,6 @@ setopt HIST_REDUCE_BLANKS
 
 # -- Options --
 setopt AUTO_CD
-setopt CORRECT
 setopt INTERACTIVE_COMMENTS
 
 # -- Completion --
