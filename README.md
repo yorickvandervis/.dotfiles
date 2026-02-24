@@ -14,8 +14,8 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ## Setup on a New Machine
 
 ```bash
-# 1. Clone
-git clone --recursive https://github.com/yorickvandervis/dotfiles.git ~/.dotfiles
+# 1. Clone (repo name is .dotfiles, so it lands in ~/.dotfiles automatically)
+git clone --recursive https://github.com/yorickvandervis/.dotfiles.git ~
 
 # 2. Install stow
 sudo apt install stow    # Ubuntu/Debian
