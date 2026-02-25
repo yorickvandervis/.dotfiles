@@ -23,17 +23,40 @@ git clone --recursive https://github.com/yorickvandervis/.dotfiles.git ~
 sudo apt install stow    # Linux (Ubuntu/Debian)
 brew install stow         # macOS
 
-# 3. Stow all packages
+# 3. Install tools
+sudo apt install btop neovim    # Linux (Ubuntu/Debian)
+brew install btop neovim         # macOS
+
+# Install opencode
+curl -fsSL https://opencode.ai/install | sh   # Linux / macOS (native installer)
+# or: brew install opencode                   # macOS alternative
+
+# 4. Stow all packages
 cd ~/.dotfiles
 stow -t ~ opencode nvim btop zsh
 
-# 4. Install opencode dependencies
+# 5. Install opencode plugin dependencies
 cd ~/.config/opencode && npm install && cd -
 
-# 5. Install cloudflare skill (optional)
+# 6. Install cloudflare skill (optional)
 curl -fsSL https://raw.githubusercontent.com/dmmulroy/cloudflare-skill/main/install.sh | bash -s -- --global
 
-# 6. Reload shell
+# 7. Reload shell
+source ~/.zshrc
+```
+
+## Updating an Existing Machine
+
+```bash
+cd ~/.dotfiles
+
+# 1. Pull latest changes (including submodules)
+git pull --recurse-submodules
+
+# 2. Restow all packages (refreshes symlinks)
+stow -R -t ~ opencode nvim btop zsh
+
+# 3. Reload shell
 source ~/.zshrc
 ```
 
@@ -98,6 +121,7 @@ After cloning, run `git submodule update --init --recursive` if you didn't use `
 
 - [GNU Stow](https://www.gnu.org/software/stow/) -- symlink farm manager
 - [Starship](https://starship.rs/) -- cross-shell prompt
-- [Neovim](https://neovim.io/) 0.11+ -- editor
+- [Neovim](https://neovim.io/) 0.11+ -- editor; LazyVim bootstraps plugins on first launch
+- [Nerd Font](https://www.nerdfonts.com/) -- required by LazyVim for icons/glyphs (e.g. `brew install --cask font-jetbrains-mono-nerd-font`)
 - [OpenCode](https://opencode.ai/) -- AI coding agent
 - [Bun](https://bun.sh/) / Node.js -- for opencode plugins
