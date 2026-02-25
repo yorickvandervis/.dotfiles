@@ -13,9 +13,6 @@
       "~/.config/opencode/*": "allow"
     }
   },
-  "enabled_providers": [
-    "anthropic"
-  ],
   "keybinds": {
     "leader": "ctrl+o",
     "messages_half_page_up": "ctrl+u",
