@@ -9,6 +9,7 @@
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.zig",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.smear-cursor"
   ],
   "install_version": 8,
