@@ -246,6 +246,23 @@ fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/fun
 
 ---
 
+## Zellij Layouts
+
+| Layout | Description |
+|--------|-------------|
+| `dev`  | 25% left (2 stacked panes) + 75% right nvim |
+
+```bash
+# New terminal session
+zellij --layout dev
+
+# From within zellij (new tab)
+zellij action new-tab --layout dev
+# or: Ctrl+t → :new-tab --layout dev
+```
+
+---
+
 ## OpenCode Skills
 
 | Skill | Description |
