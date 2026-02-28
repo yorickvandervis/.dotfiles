@@ -31,6 +31,9 @@ cursor-style-blink = true
 clipboard-read = allow
 clipboard-write = allow
 
+# Keybinds
+keybind = command+k=text:\x0c
+
 # macos options
 macos-option-as-alt = true
 macos-titlebar-proxy-icon = hidden
