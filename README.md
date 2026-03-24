@@ -261,6 +261,38 @@ zellij action new-tab --layout dev
 # or: Ctrl+t → :new-tab --layout dev
 ```
 
+## Zellij Keybindings
+
+Uses `clear-defaults=true` — all bindings are explicit.
+
+### Navigation
+
+| Keys | Context | Action |
+|------|---------|--------|
+| `Ctrl+h/j/k/l` | nvim (passthrough) | Switch nvim windows (neo-tree, splits) |
+| `Alt+h/l` | zellij (global) | Move focus between panes, or switch tab at edge |
+| `Alt+j/k` | zellij (global) | Move focus between panes (up/down) |
+| `Ctrl+p` then `h/j/k/l` | pane mode | Focus a pane |
+| `Ctrl+p` then `Shift+H/J/K/L` | pane mode | Rearrange (move) a pane |
+| `Ctrl+p` then `Shift+P` | pane mode | Move pane backwards |
+| `Ctrl+t` then `h/l` or `1-9` | tab mode | Switch tabs |
+| `Ctrl+g` | any | Toggle locked mode (all keys pass to terminal) |
+
+> **Design note:** Zellij's default config binds `Ctrl+h` to enter "move mode", which conflicts with nvim's `<C-h>` window navigation (e.g. switching between neo-tree and buffers). We removed that binding and consolidated `MovePane` into pane mode (`Ctrl+p`) under Shift variants instead. This lets `Ctrl+h/j/k/l` pass through to nvim without needing to lock zellij first.
+
+### Modes
+
+| Mode | Enter | Exit | Purpose |
+|------|-------|------|---------|
+| Normal | `Esc` / `Enter` | — | Default mode |
+| Locked | `Ctrl+g` | `Ctrl+g` | All keys pass to terminal |
+| Pane | `Ctrl+p` | `Ctrl+p` / `Esc` | Focus, move, create, close panes |
+| Tab | `Ctrl+t` | `Ctrl+t` / `Esc` | Switch, create, close tabs |
+| Resize | `Ctrl+n` | `Ctrl+n` / `Esc` | Resize panes |
+| Scroll | `Ctrl+s` | `Ctrl+s` / `Esc` | Scroll pane buffer, enter search |
+| Session | `Ctrl+o` | `Ctrl+o` / `Esc` | Session manager, plugins, config |
+| Tmux | `Ctrl+b` | `Esc` | tmux-style one-shot commands |
+
 ---
 
 ## OpenCode Skills
