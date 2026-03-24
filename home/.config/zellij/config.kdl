@@ -16,6 +16,11 @@ keybinds clear-defaults=true {
         bind "j" { MoveFocus "down"; }
         bind "k" { MoveFocus "up"; }
         bind "l" { MoveFocus "right"; }
+        bind "H" { MovePane "left"; }
+        bind "J" { MovePane "down"; }
+        bind "K" { MovePane "up"; }
+        bind "L" { MovePane "right"; }
+        bind "P" { MovePaneBackwards; }
         bind "n" { NewPane; SwitchToMode "normal"; }
         bind "p" { SwitchFocus; }
         bind "Ctrl p" { SwitchToMode "normal"; }
@@ -158,9 +163,7 @@ keybinds clear-defaults=true {
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
     }
-    shared_except "locked" "move" {
-        bind "Ctrl h" { SwitchToMode "move"; }
-    }
+
     shared_except "locked" "session" {
         bind "Ctrl o" { SwitchToMode "session"; }
     }
