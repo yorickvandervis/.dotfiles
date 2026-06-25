@@ -287,7 +287,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
+theme "tokyo-night"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -452,7 +452,7 @@ web_client {
 // (Requires restart)
 // Default: true (if the host terminal supports it)
 // 
-// support_kitty_keyboard_protocol false
+support_kitty_keyboard_protocol false
 // Whether to make sure a local web server is running when a new Zellij session starts.
 // This web server will allow creating new sessions and attaching to existing ones that have
 // opted in to being shared in the browser.
